@@ -1,14 +1,18 @@
 require 'json'
 
+Team.destroy_all
+
+# Create all team objects
+
 puts "Seeding teams..."
 
 teams_json = File.read "db/mlb-teams.json"
-
 teams_hash = JSON.parse(teams_json)
 
 teams_hash['all_data'].each do |team|
 
     Team.create(
+        static_team_id: team["team_id"],
         full_name: team["name_display_long"],
         team_code: team["bis_team_code"],
         city_name: team["name_display_short"],
@@ -21,5 +25,13 @@ teams_hash['all_data'].each do |team|
         )
 
 end
+
+#Create all player objects
+
+puts "Seeding players..."
+
+
+
+
 
 puts "✅ Done seeding!"
