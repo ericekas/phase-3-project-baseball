@@ -1,5 +1,9 @@
 source "https://rubygems.org"
 
+# Used to make network requests
+# https://github.com/rest-client/rest-client
+gem "rest-client", "~> 2.1"
+
 # A DSL for quickly creating web applications
 # https://github.com/sinatra/sinatra
 gem "sinatra", "~> 2.1"
