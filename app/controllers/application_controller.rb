@@ -4,7 +4,9 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get '/' do
-    "Welcome!"
+   "Flatstadium Game Schedule!"
+   games = Game.all
+   games.to_json
   end
   
   
