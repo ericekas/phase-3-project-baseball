@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_07_11_210740) do
   end
 
   create_table "teams", force: :cascade do |t|
+    t.integer "static_team_id"
     t.string "full_name"
     t.string "team_code"
     t.string "city_name"
@@ -37,7 +38,6 @@ ActiveRecord::Schema.define(version: 2022_07_11_210740) do
     t.string "division_full"
     t.string "venue_name"
     t.string "state"
-    t.integer "static_team_id"
   end
 
 end
