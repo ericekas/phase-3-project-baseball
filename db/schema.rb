@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_11_210740) do
+ActiveRecord::Schema.define(version: 2022_07_12_192434) do
+
+  create_table "games", force: :cascade do |t|
+    t.string "game_id"
+    t.integer "home_team_id"
+    t.string "home_team_abbrev"
+    t.string "home_team_short"
+    t.string "home_team_full"
+    t.integer "away_team_id"
+    t.string "away_team_abbrev"
+    t.string "away_team_short"
+    t.string "away_team_full"
+    t.string "game_day"
+    t.datetime "game_date"
+    t.datetime "game_time_local"
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "name_first_last"
