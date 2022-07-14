@@ -21,4 +21,3 @@ class ApplicationController < Sinatra::Base
   end
 
 end
-get "/teamsss"
