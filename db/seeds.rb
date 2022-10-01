@@ -2,7 +2,7 @@ require 'json'
 
 # Team.destroy_all
 # Player.destroy_all
-Game.destroy_all
+# Game.destroy_all
 
 # # Create all team objects
 
@@ -56,31 +56,29 @@ Game.destroy_all
 #     end
 # end
 
-games_json = RestClient.get "http://lookup-service-prod.mlb.com/json/named.mlb_broadcast_info.bam?src_type='TV'&src_comment='National'&tcid=mm_mlb_schedule&sort_by='game_time_et_asc'&home_away='H'&season='2022'"
-games_hash = JSON.parse(games_json)
+# games_json = RestClient.get "http://lookup-service-prod.mlb.com/json/named.mlb_broadcast_info.bam?src_type='TV'&src_comment='National'&tcid=mm_mlb_schedule&sort_by='game_time_et_asc'&home_away='H'&season='2022'"
+# games_hash = JSON.parse(games_json)
 
-games_hash["mlb_broadcast_info"]["queryResults"]["row"].each do |game|
+# games_hash["mlb_broadcast_info"]["queryResults"]["row"].each do |game|
     
-    Game.create(
-        game_id: game['game_id'],
-        home_team_id: game['home_team_id'],
-        home_team_abbrev: game['home_team_abbrev'],
-        home_team_short: game['home_team_short'],
-        home_team_full: game['home_team_full'],
-        away_team_id: game['away_team_id'],
-        away_team_abbrev: game['away_team_abbrev'],
-        away_team_short: game['away_team_short'],
-        away_team_full: game['away_team_full'],
-        game_day: game['game_day'],
-        game_date: game['game_date'],
-        game_time_local: game['game_time_local']
-    )
+#     Game.create(
+#         game_id: game['game_id'],
+#         home_team_id: game['home_team_id'],
+#         home_team_abbrev: game['home_team_abbrev'],
+#         home_team_short: game['home_team_short'],
+#         home_team_full: game['home_team_full'],
+#         away_team_id: game['away_team_id'],
+#         away_team_abbrev: game['away_team_abbrev'],
+#         away_team_short: game['away_team_short'],
+#         away_team_full: game['away_team_full'],
+#         game_day: game['game_day'],
+#         game_date: game['game_date'],
+#         game_time_local: game['game_time_local']
+#     )
 
-    # puts game["home_team_full"]
-    # puts game["away_team_full"]
-    # puts game["game_time_home"]
-    # puts ""
-end
+# end
+
+Game.each{|game| game.update(home_score: 0, away_score: 0)}
 
 
 puts "✅ Done seeding!"
