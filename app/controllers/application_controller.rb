@@ -32,4 +32,17 @@ class ApplicationController < Sinatra::Base
     players.to_json
   end
 
+  post '/players' do
+    players = Player.create(name_first_last: params[:name_first_last], 
+    static_player_id: params[:static_player_id],
+    team_id: params[:team_id])
+    # players.to_json
+
+  end
+  
+  delete'/games/:id' do
+    games = Game.find(params[:id])
+    games.destroy
+    games.to_json
+  end
 end
